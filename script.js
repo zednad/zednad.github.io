@@ -168,7 +168,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     async function generateQuestionsFromText(text) {
         try {
-            const response = await fetch('http://localhost:3000/generate-questions', {
+            const response = await fetch('https://quiz-backend-2.herokuapp.com/generate-questions', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
