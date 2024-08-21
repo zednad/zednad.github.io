@@ -339,3 +339,39 @@ body {
     display: none;
 }
 
+
+/* Zoom In/Out Animation */
+@keyframes zoomOut {
+    0% {
+        transform: scale(1);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(0.8);
+        opacity: 0;
+    }
+}
+
+@keyframes zoomIn {
+    0% {
+        transform: scale(0.8);
+        opacity: 0;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+.question_text, .option_list {
+    animation-duration: 0.4s;
+    animation-fill-mode: both;
+}
+
+.zoom-out {
+    animation-name: zoomOut;
+}
+
+.zoom-in {
+    animation-name: zoomIn;
+}

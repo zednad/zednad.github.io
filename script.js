@@ -277,15 +277,40 @@ document.addEventListener("DOMContentLoaded", () => {
     }
     
     function showQuestion(index) {
-        questionText.textContent = questions[index].question;
-        optionList.innerHTML = '';
-        questions[index].options.forEach((option, i) => {
-            const optionBtn = document.createElement("div");
-            optionBtn.classList.add("option");
-            optionBtn.textContent = option;
-            optionBtn.addEventListener("click", () => selectOption(i));
-            optionList.appendChild(optionBtn);
-        });
+        const questionElement = questionText;
+        const optionElement = optionList;
+    
+        // Add zoom-out effect to current question and options
+        questionElement.classList.add('zoom-out');
+        optionElement.classList.add('zoom-out');
+    
+        // Wait for the zoom-out animation to complete before updating the content
+        setTimeout(() => {
+            // Update question and options content
+            questionElement.textContent = questions[index].question;
+            optionElement.innerHTML = '';
+            questions[index].options.forEach((option, i) => {
+                const optionBtn = document.createElement("div");
+                optionBtn.classList.add("option");
+                optionBtn.textContent = option;
+                optionBtn.addEventListener("click", () => selectOption(i));
+                optionElement.appendChild(optionBtn);
+            });
+    
+            // Remove zoom-out effect and add zoom-in effect
+            questionElement.classList.remove('zoom-out');
+            optionElement.classList.remove('zoom-out');
+            questionElement.classList.add('zoom-in');
+            optionElement.classList.add('zoom-in');
+    
+            // Remove the zoom-in class after the animation is done to reset for the next question
+            setTimeout(() => {
+                questionElement.classList.remove('zoom-in');
+                optionElement.classList.remove('zoom-in');
+            }, 400); // Match this duration with the animation-duration in CSS
+    
+        }, 400); // Match this duration with the animation-duration in CSS
+    
         updateButtons();
         updateProgressBar();
     
