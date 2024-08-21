@@ -286,6 +286,22 @@ body {
     cursor: not-allowed;
 }
 
+.progress_bar_container {
+    width: 100%;
+    background-color: #f0f0f0;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+.progress_bar {
+    height: 10px;
+    width: 0%;
+    background-color: #5a77ff;
+    border-radius: 8px;
+    transition: width 0.4s ease;
+}
+
+
 /* Loader styling */
 .loader {
     width: 60px;
@@ -322,3 +338,4 @@ body {
 .hide {
     display: none;
 }
+

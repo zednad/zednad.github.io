@@ -226,9 +226,13 @@ document.addEventListener("DOMContentLoaded", () => {
             };
         }).filter(Boolean);  // Filter out any null results due to errors
     }
-    
-    
 
+    function updateProgressBar() {
+        const progressBar = document.getElementById('progress_bar');
+        const progressPercentage = ((currentQuestion) / questions.length) * 100;
+        progressBar.style.width = progressPercentage + '%';
+    }
+    
     function displayQuestions() {
         showQuestion(currentQuestion);
     
@@ -238,6 +242,7 @@ document.addEventListener("DOMContentLoaded", () => {
             if (currentQuestion < questions.length) {
                 showQuestion(currentQuestion);
             }
+            updateProgressBar(); //Update Progress Bar on every question
         });
     
         finishBtn.addEventListener("click", () => {
@@ -251,6 +256,7 @@ document.addEventListener("DOMContentLoaded", () => {
             resultBox.classList.add("hide");
             quizBox.classList.remove("hide");
             showQuestion(currentQuestion);
+            updateProgressBar(); //Update the Progress Bar if the quiz is restarted
         });
     
         quitBtn.addEventListener("click", () => {
@@ -281,6 +287,7 @@ document.addEventListener("DOMContentLoaded", () => {
             optionList.appendChild(optionBtn);
         });
         updateButtons();
+        updateProgressBar();
     
         // Initially disabling the check answer button for each question until user selects an option
         document.querySelector('.check_answer').disabled = true;
